@@ -52,7 +52,7 @@ int main()
     }
 }
 int szamitas() {
-    int correct_number = rand() % 1 + 1;
+    int correct_number = rand() % 10 + 1;
     return correct_number;
 }
 void osszehasonlitas(int szamitas1, int guess, int bet, int balance) {

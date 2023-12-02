@@ -97,7 +97,7 @@ int szam_keres(){
         if(std::cin.fail()){
             std::cin.clear();
             std::cin.ignore(1000, '\n');
-            std::cout << "Szamot irj kerlek" << std::endl;
+            std::cout << "Please write a valid number" << std::endl;
             std::cin >> x;
         }
         if(!std::cin.fail()){

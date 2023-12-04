@@ -1,4 +1,3 @@
-# casino_guessing_game
 Number Guessing Game
 Welcome to the Number Guessing Game! This is a simple guessing game written in C++ where you try to guess a randomly generated number within a specified range.\n
 Gameplay

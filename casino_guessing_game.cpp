@@ -7,8 +7,10 @@ int szamitas();
 void osszehasonlitas(int szamitas1, int guess, int bet, int balance);
 bool sikeres_e(int szamitas1, int guess);
 int check_balance();
-int main()
-{
+int szam_keres();
+
+int main(){
+    std::cout << "Welcome to the casino!" << std::endl;
     int balance, bet, szamitas1;
     int guesss = 0;
     std::string player, play;
@@ -22,17 +24,18 @@ int main()
     else if (play == "yes") {
         std::cout << "then lets play" << std::endl;
         std::cout << "how much money do you have? ";
-        std::cin >> balance;
+        balance = szam_keres();
         do {
             std::cout << "what is your bet? ";
-            std::cin >> bet;
+            bet = szam_keres();
             if (balance < bet) {
                 std::cout << "You dont have enough money!\n";
                 std::cout << "Be realistic!\n";
             }
             else {
                 std::cout << "write a number: ";
-                std::cin >> guesss;
+                guesss = szam_keres();
+
                 std::cout << "the winner number is: " << szamitas() << std::endl;
                 szamitas1 = szamitas();
                 osszehasonlitas(szamitas1, guesss, bet, balance);
@@ -50,11 +53,14 @@ int main()
     else {
         std::cout << "write a valid choice" << std::endl;
     }
+    return 0;
 }
+
 int szamitas() {
     int correct_number = rand() % 10 + 1;
     return correct_number;
 }
+
 void osszehasonlitas(int szamitas1, int guess, int bet, int balance) {
     if (sikeres_e(szamitas1, guess)) {
         std::cout << "You won: " << bet * 2 << std::endl;
@@ -66,12 +72,15 @@ void osszehasonlitas(int szamitas1, int guess, int bet, int balance) {
         std::cout << "You guessed too high, and you lost: " << bet << std::endl;
     }
 }
+
 int win(int bet, int balance) {
     return balance += bet ;
 }
+
 int lose(int bet, int balance) {
     return balance -= bet;
 }
+
 bool sikeres_e(int szamitas1, int guess) {
     if (szamitas1 == guess) {
         return true;
@@ -79,4 +88,21 @@ bool sikeres_e(int szamitas1, int guess) {
     else {
         return false;
     }
+}
+
+int szam_keres(){
+    int x = 0;
+    std::cin >> x;
+    while(1){
+        if(std::cin.fail()){
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
+            std::cout<< "szamot irj kerlek"<<std::endl;
+            std::cin>> x;
+        }
+        if(!std::cin.fail()){
+            return x;
+        }
+    }
+    return 0;
 }
